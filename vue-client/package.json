@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "BUILD_PATH=../express-backend/public build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
