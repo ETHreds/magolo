@@ -1,8 +1,8 @@
 <template>
     <div>
         <SharedHero :itemsProp="customItems" heading=" Team" ></SharedHero>
-        <div class="grid w-10 mx-auto nested-grid pt-5">
-            <div class="col-4">
+        <div class="grid sm:flex sm:flex-column w-10 mx-auto nested-grid pt-5">
+            <div class="col-4 ">
                 <div class="">
                     <Image :src="magoloSnr" width="100%" height="400"/>
 
