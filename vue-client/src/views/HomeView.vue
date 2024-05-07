@@ -1,7 +1,7 @@
 <template>
-    <div class="home-hero">
+    <div class="homepage">
         <HomeHero />
-        <ListSection v-if="data">
+        <ListSection>
             <template v-slot:header>WHAT WE DO</template>
             <template v-slot:subtitle>Protecting Your Interests and Achieving Your Goals</template>
             <template v-slot:content>
@@ -13,12 +13,14 @@
                     :title="practiceArea.title"
                     :description="practiceArea.description"
                     :iconClass="practiceArea.iconClass"
-                    class="mb-2"
+                    class="mb-6"
                     />
+                   
                 </div>
+                <Button class="type1" label="See More"/>
             </template>
         </ListSection>
-        <TwoColumns class="mt-8">
+        <TwoColumns class="mt-8" v-if="data">
             <template v-slot:left>
                 <ListSection v-if="data">
                     <template v-slot:header>WHAT WE ARE ABOUT</template>
@@ -36,45 +38,29 @@
                 </div>
             </template>
         </TwoColumns>
-        <ListSection v-if="data">
+        <ListSection >
             <template v-slot:header>The Impact Equation</template>
             <template v-slot:subtitle>Quantifying the Value We Bring to Clients.</template>
             <template v-slot:content>
-                <div class="grid justify-content-center gap-4 py-4 border-primary" >
-                    <CounterCard class="" style="width: 22%;" v-for="(achievement, index) in achievementsData" :key="index" :achievement="achievement" />
+                <div class="grid justify-content-center mx-auto my-2 px-8 sm:px-1 border-primary" >
+                    <CounterCard class="col-12 lg:col-6"  v-for="(achievement, index) in achievementsData" :key="index" :achievement="achievement" />
                 </div>
 
             </template>
         </ListSection>
-        <TwoColumns>
-            <template v-slot:left>
-                <div class="">
-                    <ClientFeedback v-if="data"></ClientFeedback>
-
-                </div>
-            </template>
-            <template v-slot:right>
-                <div class="justify-content-center align-items-center">
-                    <ListSection v-if="data">
-                        <template v-slot:header>GET IN TOUCH</template>
-                        <template v-slot:subtitle>Find Out if you have a case</template>
-                        <template v-slot:content> Call today to get a free evaluation {{ data.phone }} </template>
-                    </ListSection>
-                </div>
-            </template>
-        </TwoColumns>
-        <Vue3Marquee :clone="true" :duration="5">
+        <ClientFeedback ></ClientFeedback>
+        <Vue3Marquee :clone="true" :duration="5"
+            class="mt-5 mb-5"    
+        >
             <Chip 
             v-for="association in data.associations"
             :label="association.name" :image="association.avatar" 
-            class="mx-2"/>
+            class="mx-2"
+            style="background-color: beige;"/>
         </Vue3Marquee>
-        
-        <ListSection v-if="data">
-            <template v-slot:header>GET IN TOUCH</template>
-            <template v-slot:subtitle>Find Out if you have a case</template>
-            <template v-slot:content> Call today to get a free evaluation {{ data.phone }} </template>
-        </ListSection>
+        <CTA/>
+        <VueTyper text='Hello World! I was registered globally!'></VueTyper>
+  
 
     </div>
 </template>
@@ -86,6 +72,7 @@ import PracticeAreasCards from "@/components/PracticeAreasCards.vue"
 import TwoColumns from '@/components/TwoColumns.vue'
 import CounterCard from "@/components/CounterCard.vue"
 import ClientFeedback from '@/components/ClientFeedback.vue'
+import CTA from '@/components/CTA.vue'
 
 import snr from '@/assets/images/snr_abt.jpg'
 
@@ -97,13 +84,13 @@ const practiceAreas = ref([
     imageSrc: "https://images.unsplash.com/photo-1504439268584-b72c5019471e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFtaWx5JTIwbGF3fGVufDB8fDB8fHww",
     altText: "Family Law Image",
     title: "Family Law",
-    description: "We assist clients with various family law matters, including divorce, child custody, child support, and prenuptial agreements.",
+    description: "We assist clients with various family law matters, including divorce, child custody, child support, and prenuptial agreements and Kadhi courts for Muslim clients.",
     iconClass: "pi pi-users"
   },
   {
     imageSrc: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNyaW1pbmFsfGVufDB8fDB8fHww",
-    altText: "Criminal Law Image",
-    title: "Criminal Law",
+    altText: "Criminal Defence Image",
+    title: "Criminal Defence",
     description: "Our skilled criminal defense attorneys believe in exploring all options, including negotiation, trial defense, and appeals.",
     iconClass: "pi pi-shield" 
   },
@@ -121,13 +108,7 @@ const practiceAreas = ref([
     description: "We ensure your legal interests are protected throughout the process, providing experienced guidance and negotiating favorable terms.",
     iconClass: "pi pi-home" 
   },
-//   {
-//     imageSrc: "https://plus.unsplash.com/premium_photo-1661773084348-cbb7bd5d7c47?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZXN0YXRlJTIwcGxhbm5pbmd8ZW58MHx8MHx8fDA%3D",
-//     altText: "Estate Planning",
-//     title: "Estate Planning & Probate",
-//     description: "Our services include drafting wills, trusts, and powers of attorney, as well as assisting with probate matters to facilitate a smooth and efficient inheritance process.",
-//     iconClass: "pi pi-file" 
-//   },
+
 
 ]);
 
@@ -139,28 +120,32 @@ const achievementsData = ref([
         icon: "pi pi-money-bill",
         number: 2010,
         recentNumber: 65,
-        time: " combined attorney experience"
+        time: " combined years experience",
+        suffix:" "
     },
     {
         title: "Success Rate",
         icon: "pi pi-money-bill",
         number: 96,
         recentNumber: 15000,
-        time: " Cases Handled"
+        time: " Cases Handled",
+        suffix:"%"
     },
     {
         title: "Client Satisfaction",
         icon: "pi pi-money-bill",
         number: 98,
         recentNumber: 250,
-        time: " Clients"
+        time: " Clients",
+        suffix:"%"
     },
     {
         title: "Claims Won",
         icon: "pi pi-money-bill",
         number: 100,
         recentNumber: 23,
-        time: " since start of year"
+        time: " since start of year",
+        suffix: " M+"
     }
 ])
 const data = ref(null);

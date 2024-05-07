@@ -1,12 +1,14 @@
 const http = require('http');
 const app = require('./app');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 const server = http.createServer(app);
+
+
 async function startServer(){
 	const uri = process.env.MONGO_URI;
 

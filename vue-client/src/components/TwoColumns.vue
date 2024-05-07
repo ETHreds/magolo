@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="grid grid-nogutter surface-section text-800">
+        <div class="grid grid-nogutter">
             <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
                 <section>
                     <slot name="left"></slot>

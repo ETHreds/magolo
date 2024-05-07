@@ -4,7 +4,7 @@ const URL = 'http://localhost:3000';
 
 const apiService = {
   getData() {
-    return axios.get(`${URL}`);
+    return axios.get(`${URL}/firmProfile`);
   },
   getFeedback(){
      return axios.get(`${URL}/`)

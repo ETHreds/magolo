@@ -1,3 +1,4 @@
+import "@/assets/main.css"
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -20,6 +21,8 @@ import AccordionTab from 'primevue/accordiontab';
 import Breadcrumb from 'primevue/breadcrumb';
 import InputGroup from 'primevue/inputgroup'
 import InputText from 'primevue/inputtext'
+import Avatar from "primevue/avatar"
+
 
 
 
@@ -28,8 +31,13 @@ import Ripple from 'primevue/ripple';
 // third party
 import Vue3Autocounter from 'vue3-autocounter';
 import Vue3Marquee from 'vue3-marquee';
-import Avatar from 'primevue/avatar';
+  // ES6
+import { AutoTyperVue } from "auto-typer-vue3";
+import  "auto-typer-vue3/dist/style.css";
+
 import Chip from 'primevue/chip'
+import Column from 'primevue/column'
+import DataTable from 'primevue/datatable'
 import Divider from 'primevue/divider'
 
 const pinia = createPinia()
@@ -38,6 +46,7 @@ const app = createApp(App)
 
 
 app.component('vue3-autocounter', Vue3Autocounter)
+app.component('AutoTyperVue', AutoTyperVue)
 
 app.component('Menubar', Menubar)
 app.component('Button', Button)
@@ -51,13 +60,16 @@ app.component('Breadcrumb', Breadcrumb)
 app.component('InputGroup', InputGroup)
 app.component('InputText', InputText)
 app.component('Chip', Chip)
-app.component('Divider', Divider)
+app.component('DataTable', DataTable)
+app.component('Column', Column)
+app.component('Divider',Divider)
 
 app.directive('ripple', Ripple);
 
 app.use(pinia)
-app.use(Vue3Marquee);
 app.use(PrimeVue);
+app.use(Vue3Marquee);
+
 app.use(router)
 
 app.mount('#app')

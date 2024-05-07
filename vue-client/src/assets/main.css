@@ -1,0 +1,12 @@
+:root {
+    --blue: #272e6e;
+    --beige: #ffffc3;
+    --gold: #ffc55c;
+    --orange:#e95d35;
+    --blue-op: rgba(39, 46, 110, 0.5);
+    --beige-op: rgba(255, 255, 195, 0.5);
+    --gold-op: rgba(255, 198, 92, 0.5);
+    --orange-op:rgba(233, 92, 53, 0.5);
+    /* Add more variables as needed */
+  }
+  

@@ -1,7 +1,7 @@
 
 <template>
     <div class="menu-container">
-        <Menubar :model="items">
+        <Menubar :model="items" style="background-color: rgba(255, 255, 255, 0.5);">
             <template #item="{ item, props}">
                 <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
                     <a v-ripple :href="href" v-bind="props.action" @click="navigate">
@@ -11,7 +11,7 @@
                 </router-link>
             </template>
             <template #end>
-                <Button>Free Consultation</Button>
+                <Button class="btn type1">Free Consultation</Button>
             </template>
         </Menubar>
     </div>
@@ -52,3 +52,6 @@ const items = ref([
   
 ]);
 </script>
+<style>
+
+</style>

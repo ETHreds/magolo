@@ -1,0 +1,15 @@
+{
+  "name": "magolo",
+  "version": "1.0.0",
+  "description": "J.O MAGOLO Law Firm Website",
+  "main": "index.js",
+  "scripts": {
+    "server":"npm run dev --prefix express-backend",
+    "client":"npm run dev --prefix vue-client",
+    "watch":"npm run server & npm run client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

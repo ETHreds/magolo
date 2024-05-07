@@ -27,3 +27,10 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+| Dependency | Documentation link |
+|---|---|
+| AutoTyperVue | https://www.npmjs.com/package/auto-typer-vue3#installation |
+|Vue3 Marquee | https://www.npmjs.com/package/vue3-marquee|
+| Cell 1, Row 2 | Cell 2, Row 2 |
