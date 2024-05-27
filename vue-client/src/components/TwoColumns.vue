@@ -1,23 +1,35 @@
 <template>
-    <div>
-        <div class="grid grid-nogutter">
-            <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
-                <section>
+    <div class="wrapper">
+        <div class="twocols">
+            <div class="grid align-items-center"
+                :style="{ gridTemplateColumns: reverseColumns ? '1fr 1fr' : '1fr 1fr' }">
+                <div class="lg:col-7" v-if="!reverseColumns">
                     <slot name="left"></slot>
-                </section>
-            </div>
-            <div class="col-12 md:col-6 overflow-hidden">
-                <!-- <img src="/images/blocks/hero/hero-1.png" alt="Image" class="md:ml-auto block md:h-full" style="clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%)" /> -->
-                <slot name="right"></slot>
+                </div>
+                <div class="lg:col-5" v-if="!reverseColumns">
+                    <slot name="right"></slot>
+                </div>
+                <div class="lg:col-7" v-if="reverseColumns">
+                    <slot name="right"></slot>
+                </div>
+                <div class="lg:col-5" v-if="reverseColumns">
+                    <slot name="left"></slot>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 
+const reverseColumns = ref(false);
 </script>
 
 <style lang="scss" scoped>
-
+.twocols {
+    position: relative;
+    width: 100%;
+    padding: 45px 0;
+}
 </style>

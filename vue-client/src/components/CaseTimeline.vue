@@ -1,43 +1,50 @@
 <template>
-    <div class="">
-        <h3 class="p-5 text-center">J.O MAGOLO &amp; Co. Advocates approach to legal representation</h3>
+  <div class="">
+    <!-- <div class="credits"><a target="_blank" href="https://www.freepik.com/free-vector/infographic-template-with-yearly-info_1252895.htm">inspired by</a></div> -->
+
+    <ListSection>
+      <template v-slot:header>OUR PROCESS</template>
+      <template v-slot:content>
         <ul>
-            <li 
-            v-for="(event, index) in events" :key="index"
-            :style="{ '--accent-color': getAccentColor(index) }">
-                <div class="date">{{ index + 1}}. {{ event.title }}</div>
-                <div class="title">{{ event.title }}</div>
-                <div class="descr">{{ event.body }}</div>
-            </li>
+          <li v-for="(event, index) in events" :key="index" :style="{ '--accent-color': getAccentColor(index) }">
+            <div class="date">{{ index + 1 }}. {{ event.title }}</div>
+            <div class="title">{{ event.title }}</div>
+            <div class="descr">{{ event.body }}</div>
+          </li>
 
         </ul>
-<!-- <div class="credits"><a target="_blank" href="https://www.freepik.com/free-vector/infographic-template-with-yearly-info_1252895.htm">inspired by</a></div> -->
-    </div>
+      </template>
+    </ListSection>
+  </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import ListSection from "./ListSection.vue"
 
 const events = ref([
-    {'title':'Initial Consultation & Information Gathering',
+  {
+    'title': 'Initial Consultation & Information Gathering',
     'body': ' Commencing with a complimentary consultation, we address your legal matters and consider all viable options. We ascertain crucial details and evaluate the prospect of a successful resolution outside of litigation. A tailored strategy is developed in collaboration with you, taking into account your unique objectives and aspirations.'
-    },
-    {'title':'Collaborative Resolution & Negotiation',
+  },
+  {
+    'title': 'Collaborative Resolution & Negotiation',
     'body': ' We advocate for alternative dispute resolution (ADR) methods such as mediation and arbitration, leveraging our proficiency to guide you through these processes. We negotiate on your behalf with the intent of achieving a fair and efficient outcome, diverting the need for expensive litigation.'
-    },
-    {'title':'Legal Action:Legal Action',
+  },
+  {
+    'title': 'Legal Action:Legal Action',
     'body': 'In the event that a resolution cannot be attained through ADR, we meticulously prepare your case for court. Our seasoned litigators vigorously represent you in court if necessary, however, litigation remains a last resort after exhausting all other options.'
-    },
-    {'title':'Post-Case Support',
+  },
+  {
+    'title': 'Post-Case Support',
     'body': 'We ensure you are kept informed throughout the entire process and fully understand the final outcome of your case. We remain available to address any potential questions or concerns, maintaining our commitment even after the case has concluded.'
-    }
+  }
 ]);
 const getAccentColor = (index) => {
-      return index % 2 === 0 ? 'var(--blue)' : 'var(--gold)';
-    };
+  return index % 2 === 0 ? 'var(--blue)' : 'var(--gold)';
+};
 </script>
 <style scoped>
-
 *,
 *::before,
 *::after {
@@ -146,12 +153,14 @@ ul li .descr {
   position: relative;
   padding-inline: 1.5rem;
 }
+
 ul li .title {
   overflow: hidden;
   padding-block-start: 1.5rem;
   padding-block-end: 1rem;
   font-weight: 500;
 }
+
 ul li .descr {
   padding-block-end: 1.5rem;
   font-weight: 300;
@@ -170,6 +179,7 @@ ul li .descr::before {
   filter: blur(4px);
   transform: translate(-50%, 50%);
 }
+
 ul li .title::before {
   bottom: calc(100% + 0.125rem);
 }
@@ -183,12 +193,15 @@ ul li .descr::before {
   ul {
     grid-template-columns: 1fr var(--line-w) 1fr;
   }
+
   ul::before {
     grid-column: 2;
   }
+
   ul li:nth-child(odd) {
     grid-column: 1;
   }
+
   ul li:nth-child(even) {
     grid-column: 3;
   }
@@ -207,9 +220,9 @@ ul li .descr::before {
     transform: translate(-50%, -50%);
     left: calc(100% + var(--col-gap) + var(--line-w) / 2);
   }
+
   ul li:nth-child(odd) .date {
     border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
   }
 }
-
 </style>

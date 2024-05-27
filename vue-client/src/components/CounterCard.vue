@@ -1,5 +1,5 @@
 <template>
-    <div class="surface-card shadow-2 p-3 border-round">
+    <div class="surface-card p-3">
         <div class="flex justify-content-between mb-3">
             <div>
                 <span class="block text-500 font-medium mb-3">{{ achievement.title }}</span>

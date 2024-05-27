@@ -1,26 +1,21 @@
 <template>
-    <div>
-        <SharedHero :itemsProp="customItems" heading="Featured Cases" ></SharedHero>
-        <ListSection>
-            <template v-slot:header>FEATURED WORK</template>
-            <template v-slot:subtitle>Find Out if you have a case</template>
-            <template v-slot:content> 
-                <div class="grid">
-                    <CaseCard
-                    class="col md:col-4"
-                    v-for="(casep, index) in cases" :key="index"
-                    :imageSrc="casep.imageSrc"
-                    :category="casep.category"
-                    :description="casep.description"
-                /> 
-                </div>   
-            </template>
-        </ListSection>
+  <div>
+    <SharedHero :itemsProp="customItems" heading="Featured Cases"></SharedHero>
+    <ListSection>
+      <template v-slot:header>FEATURED WORK</template>
+      <template v-slot:content>
+        <div class="grid align-items-center">
+          <CaseCard class="lg:col-4 md:col-6 sm:col-12" v-for="(casep, index) in cases" :key="index"
+            :imageSrc="casep.imageSrc" :category="casep.category" :altText="casep.altText" />
+        </div>
+      </template>
+      <Button label="Load More"></Button>
+    </ListSection>
 
-        <CTA/>
+    <CTA />
 
 
-    </div>
+  </div>
 </template>
 
 <script setup>
@@ -66,6 +61,4 @@ const cases = ref([
 ]);
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
